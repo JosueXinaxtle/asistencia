@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Materias</title>
+    <link rel="stylesheet" href="../modelo/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="bg-dark navbar navbar-expand-lg bg-body-tertiary " >
+  <div class="container-fluid" >
+    <a class="navbar-brand text-light" href="agregaralu.html"> ISAXI</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Asistencia
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="asistencia.php">Agregar</a></li>
+            <li><a class="dropdown-item" href="asistenciamuestra.php">Mostrar </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Submódulos</a></li>
+          </ul>
+        </li>
+       <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" href="agregaralu.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Alumnos
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="agregaralu.html">Agregar Alumnos</a></li>
+            <li><a class="dropdown-item" href="alumnosmuestra.php">Mostrar Alumnos</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Especialidad
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="agregaespe.html">Agregar</a></li>
+            <li><a class="dropdown-item" href="mostrarespe.php">Mostrar </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Submódulos</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Docentes
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="agregadocentes.html">Agregar Docentes</a></li>
+            <li><a class="dropdown-item" href="docentesmuestra.php">Mostrar Docentes</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Materias
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="agregamateria.html">Agregar</a></li>
+            <li><a class="dropdown-item" href="materiamuestra.php">Mostrar </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Submódulos</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            CITAS
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="agregacitas.php">Agregar</a></li>
+            <li><a class="dropdown-item" href="mostrarcitas.php">Mostrar </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Submódulos</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Turno
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="agregaturno.html">Agregar</a></li>
+            <li><a class="dropdown-item" href="turnomuestra.php">Mostrar </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Submódulos</a></li>
+          </ul>
+        </li>
+
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-primary text-light" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<h1>Agregar Materias</h1>
+      <form class="row g-3 needs-validation" action="../controlador/agregamateria.php" method="post" novalidate>
+        <div class="col-md-4">
+          <label for="validationCustom01" class="form-label">Materia</label>
+          <input type="text" class="form-control" name="mat" id="validationCustom01" value="" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+          <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Desciripción</label>
+            <input type="text" class="form-control" name="desc" id="validationCustom02" value="" required>
+            <div class="valid-feedback">
+            </div>
+          </div>
+       
+      
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Guardar</button>
+        </div>
+      </form>
+
+    <br><br>
+      <img src="../img/fb.png" class="rounded float-start" alt="...">
+      <br><br>
+    <img src="../img/User.png" class="rounded float-end" alt="...">
+      <br><br>
+
+      <h3>Alumnos Inscritos</h3>
+<!-- On tables -->
+<table  class="table table-dark table-striped">
+  
+
+
+
+<script src="../modelo/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

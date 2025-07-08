@@ -1,0 +1,153 @@
+Proeyctos que guarda asistencias de alumnos
+Herramientas de desarrollo:
+HTML5    Bootstrap    PHP    Mysql - XAMPP
+
+Descarga de Template, para el menú. 
+https://pratikborsadiya.in/vali-admin/
+
+ id_espe | espe                     |
++---------+--------------------------+
+|    1500 | Programacion             |
+|    1501 | Laboratorista Quimico    |
+|    1502 | Mantenimiento Automotriz |
+|    1503 | Contabilidad             |
+|    1504 | Logistica
+
++----------+-------+-------+
+| id_grado | grado | grupo |
++----------+-------+-------+
+|     2000 |     1 | A     |
+|     2001 |     1 | B     |
+
++--------+----------+---------+--------+------+--------------+---------------------+--------------+----------------+------------+
+| id_alu | nombre   | ape1    | ape2   | sexo | tel          | correo              | curp         | dir            | naci       |
++--------+----------+---------+--------+------+--------------+---------------------+--------------+----------------+------------+
+|      1 | Yuliette | Manzola | Ju     |      | 722333344848 |                     |              | Av Mexico23    | NULL       |
+|      2 | Carolina | Manzola | Lara   |      | 72244444     |                     |              | Av. Juarez 545 | NULL       |
+
+ id_mat | materia                                              | descrip                 |
++--------+------------------------------------------------------+-------------------------+
+|    400 | Crear base de datos para aplicaiones web             | Tercer grado, Mysql     |
+|    401 |  Aplica frameworks para crear un sistema de sistemas | Tercer grado, Bootstrap |
+
+ id_doc | docente  | ape1        | ape2    | dir               | tel        | rfc         | correo              | curp           |
++--------+----------+-------------+---------+-------------------+------------+-------------+---------------------+----------------+
+|    500 | Gustavo  | Backarlette | Ramirez | Hda. La Noria 232 | 7225432278 | BRG43242234 | gustavo43@gmail.com | BRG23423423423 |
+|    501 | Carolina | Flores      | Ramirez | Hda. Laureles 656 | 7225433434 | FRC43242234 | calo321@gmail.com   | FRC23423427767 |
+
+
+| id_turno | turno      |
++----------+------------+
+|     2100 | Matutino   |
+|     2101 | Vespertino |
++----------+------------+
+insert into asistencia(20000, 1, 500, 400, 1500, 2020, "Yuliete", "Garcia", "Lopez", "13:00);
+
+Para guardar la asistencia de alumnos en una base de datos usando PHP y MySQL, necesitarás realizar varios pasos. A continuación te muestro cómo hacerlo:
+### 1. Crear la base de datos y la tabla
+Primero, crea una base de datos en MySQL y una tabla para almacenar la información de la asistencia.
+```sql
+CREATE DATABASE escuela;
+USE escuela;
+CREATE TABLE asistencia (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    alumno_id INT NOT NULL,
+    fecha DATE NOT NULL,
+    estado ENUM('presente', 'ausente', 'tarde') NOT NULL,
+    FOREIGN KEY (alumno_id) REFERENCES alumnos(id) -- Suponiendo que tienes una tabla de alumnos
+);
+```
+En este ejemplo, la tabla `asistencia` tiene un campo `alumno_id` que hace referencia a una tabla `alumnos` (que deberías tener creada). El campo `estado` registra si el alumno está "presente", "ausente" o "tarde".
+### 2. Conectar PHP a MySQL
+En PHP, deberás establecer una conexión con la base de datos. Aquí hay un ejemplo de cómo hacerlo usando `mysqli`:
+```php
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "escuela";
+// Crear la conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Comprobar la conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+?>
+```
+### 3. Guardar la asistencia
+Ahora puedes crear un formulario HTML para registrar la asistencia de los alumnos. Luego, en el script PHP, se procesan los datos y se guardan en la base de datos.
+#### Formulario HTML para ingresar la asistencia:
+```html
+<form action="guardar_asistencia.php" method="POST">
+    <label for="alumno_id">Alumno:</label>
+    <select name="alumno_id" id="alumno_id">
+        <!-- Aquí debes cargar los alumnos desde la base de datos -->
+        <option value="1">Juan Pérez</option>
+        <option value="2">María López</option>
+        <!-- Agrega más opciones de alumnos aquí -->
+    </select><br>
+    <label for="fecha">Fecha:</label>
+    <input type="date" name="fecha" id="fecha" required><br>
+    <label for="estado">Estado:</label>
+    <select name="estado" id="estado">
+        <option value="presente">Presente</option>
+        <option value="ausente">Ausente</option>
+        <option value="tarde">Tarde</option>
+    </select><br>
+    <button type="submit">Guardar</button>
+</form>
+```#### Script PHP para guardar la asistencia:   ```php
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Obtener los datos del formulario
+    $alumno_id = $_POST['alumno_id'];
+    $fecha = $_POST['fecha'];
+    $estado = $_POST['estado'];
+    // Insertar los datos en la base de datos
+    $sql = "INSERT INTO asistencia (alumno_id, fecha, estado) VALUES (?, ?, ?)";
+    // Preparar la declaración
+    $stmt = $conn->prepare($sql);
+    if ($stmt === false) {
+        die("Error en la preparación: " . $conn->error);
+    }
+    // Vincular los parámetros
+    $stmt->bind_param("iss", $alumno_id, $fecha, $estado);
+    // Ejecutar la declaración
+    if ($stmt->execute()) {
+        echo "Asistencia guardada con éxito.";
+    } else {
+        echo "Error al guardar la asistencia: " . $stmt->error;
+    }
+    // Cerrar la declaración y la conexión
+    $stmt->close();
+    $conn->close();
+}
+?>
+### Explicación: 1. El formulario HTML permite seleccionar el alumno, la fecha y el estado de asistencia.
+2. Cuando el formulario se envía, se realiza una inserción en la base de datos con los valores proporcionados.
+3. El script PHP (`guardar_asistencia.php`) recibe los datos y los guarda en la tabla `asistencia`.
+### 4. Verificación de la asistencia
+Si necesitas ver las asistencias guardadas, puedes crear un script para mostrar los registros:
+```php
+<?php
+$sql = "SELECT a.fecha, al.nombre, a.estado
+        FROM asistencia a
+        JOIN alumnos al ON a.alumno_id = al.id
+        ORDER BY a.fecha DESC";
+
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "Fecha: " . $row['fecha'] . " - Alumno: " . $row['nombre'] . " - Estado: " . $row['estado'] . "<br>";
+    }
+} else {
+    echo "No hay registros de asistencia.";
+}
+
+$conn->close();
+?>
+```
+Este script recupera todas las asistencias y las muestra con la fecha, el nombre del alumno y su estado de asistencia.
+¡Eso es todo! Así es como puedes guardar la asistencia de los alumnos en MySQL con PHP.

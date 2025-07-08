@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Docentes</title>
+    <link rel="stylesheet" href="../modelo/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <nav class="bg-dark navbar navbar-expand-lg bg-body-tertiary " >
+  <div class="container-fluid" >
+    <a class="navbar-brand text-light" href="agregaralu.html"> ISAXI</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Asistencia
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="asistencia.php">Agregar</a></li>
+            <li><a class="dropdown-item" href="asistenciamuestra.php">Mostrar </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Submódulos</a></li>
+          </ul>
+        </li>
+       <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" href="agregaralu.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Alumnos
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="agregaralu.html">Agregar Alumnos</a></li>
+            <li><a class="dropdown-item" href="alumnosmuestra.php">Mostrar Alumnos</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Especialidad
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="agregaespe.html">Agregar</a></li>
+            <li><a class="dropdown-item" href="mostrarespe.php">Mostrar </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Submódulos</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Docentes
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="agregadocentes.html">Agregar Docentes</a></li>
+            <li><a class="dropdown-item" href="docentesmuestra.php">Mostrar Docentes</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Materias
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="agregamateria.html">Agregar</a></li>
+            <li><a class="dropdown-item" href="materiamuestra.php">Mostrar </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Submódulos</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            CITAS
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="agregacitas.php">Agregar</a></li>
+            <li><a class="dropdown-item" href="mostrarcitas.php">Mostrar </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Submódulos</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Turno
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="agregaturno.html">Agregar</a></li>
+            <li><a class="dropdown-item" href="turnomuestra.php">Mostrar </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Submódulos</a></li>
+          </ul>
+        </li>
+
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-primary text-light" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+      <div class="col-12 pt-4 text-primary">
+        <h1 class="text-center ">Agregar Docentes</h1>
+      </div>
+        <form class="row g-3 pb-3 needs-validation" action="../controlador/agregadocente.php" method="post" novalidate>
+        
+        <div class="col-md-4">
+          <label for="validationCustom01" class="form-label">Docente</label>
+          <input type="text" class="form-control" name="nom" id="validationCustom01" value="" required>
+        </div>
+        
+          <div class="col-md-3">
+            <label for="validationCustom04" class="form-label">Genero:</label>
+            <select class="form-select" name="gen" id="validationCustom04" required>
+              <option selected disabled value="">Elige</option>
+              <option>Femenino</option>
+              <option>Masculino</option>
+            </select>
+            Please select a valid state.
+            <div class="invalid-feedback">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Dirección:</label>
+            <input type="text" class="form-control" name="dir" id="validationCustom02" value="" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+
+          <div class="col-md-4">
+          <label for="validationCustomUsername" class="form-label">Teléfono:</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend">Tel</span>
+            <input type="text" class="form-control" name="tel" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+            <div class="invalid-feedback">
+              Please choose a username.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">RFC:</label>
+            <input type="text" class="form-control" name="rfc" id="validationCustom02" value="" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+        <div class="col-md-4">
+            <label for="validationCustomUsername" class="form-label">Correo:</label>
+            <div class="input-group has-validation">
+              <span class="input-group-text" id="inputGroupPrepend">@</span>
+              <input type="text" class="form-control" name="cor" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">
+                Please choose a username.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">CURP:</label>
+            <input type="text" class="form-control" name="curp" id="validationCustom02" value="" required>
+            <div class="valid-feedback">
+            </div>
+          </div>
+       
+        <div class="col-12 pb-4 text-center">
+          <button class="btn btn-primary col-lg-4" type="submit">Guardar</button>
+        </div>
+      </form>
+
+<footer class="bg-dark text-dark pt-5 pb-4">
+  <div class="container text-center text-md-start">
+      <div class="row text-center text-md-start">
+          
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 text-light">
+              <h6 class="text-uppercase mb-4 fontweigth-bold text-light">Nosotros</h6>
+              <hr class="mb-4">
+              <p class="text-light">ISAXI Ingenieria en Sistemas Informáticos y Administración Xinaxtle </p>
+          </div>
+   <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 text-light">
+      <h6 class="text-uppercase mb-4 fontweigth-bold text-light">Dejanos Ayudarte</h6>
+      <hr class="mb-4">
+      <p> <a href="#" class="text-light">Tu Cuenta</a> </p>
+      <p> <a href="#" class="text-light">Tus Ordenes</a> </p>
+      <p> <a href="#" class="text-light">Manejo de Cuenta</a> </p>
+      <p> <a href="#" class="text-light">Ayuda</a> </p>
+   </div>
+
+   <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 text-light">
+    <h6 class="text-uppercase mb-4 fontweigth-bold text-light">copia de ayuda</h6>
+    <hr class="mb-4">
+    <p> <a href="#" class="text-light">Tu Cuenta</a> </p>
+    <p> <a href="#" class="text-light">Tus Ordenes</a> </p>
+    <p> <a href="#" class="text-light">Manejo de Cuenta</a> </p>
+    <p> <a href="#" class="text-light">Ayuda</a> </p>
+ </div>
+
+   <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+      <h6 class="text-uppercase mb-4 font-weigth-bold text-light">Opciones</h6>
+      <hr class="mb-4 text-light">      
+       <p>  <a href="#" class="text-light">Alumnos</a>   </p>
+      <p>   <a href="#" class="text-light">Docentes</a> </p>
+      <p>   <a href="#" class="text-light">Materias</a> </p>
+      <p>   <a href="#" class="text-light">Asistencias</a>  </p>
+   </div>
+   <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 text-light">
+      <h6 class="text-uppercase mb-4 font-weigth-bold text-light">Contacto</h6>
+      <hr class="mb-4">
+      <p> <a href="#" class="text-light"> <li class="fas fa-home me-3"></li>isaxi </a> </p>
+      <p> <a href="#" class="text-light"> <li class="fas fa-envelope me-3"></li>joxcsa@gmail.com </a> </p>
+      <p> <a href="#" class="text-light"><li class="fas fa-phone me-3"></li>221 111 7565 </a> </p>
+      <p> <a href="#" class="text-light"><i class="fa-solid fa-location-dot me-3"></i>Ubicación</a> </p>
+   </div>
+   <hr class="mb-4">
+   <div class="text-center mb-4">
+      <p class="text-light">
+        <a href="terminos.html">Terminos y condiciones  </a> &copy; Derechos de Autor. 
+          <a href="#"><strong> ISAXI </strong></a> Toluca. México. 2013-2025 <a href="#"> Aviso de privacidad</a>  <a href="#"> Ayuda</a>
+      </p>
+   </div>
+   <div class="text-center">
+      <ul class="list-unstyled list-inline">
+          <li class="list-inline-item">
+              <a href="#" class="text-primary"><i class="fab fa-facebook"></i></a>
+          </li> 
+          <li class="list-inline-item">
+              <a href="#" class="text-primary"><i class="fab fa-youtube"></i></a>
+          </li>
+          <li class="list-inline-item">
+              <a href="#" class="text-primary"><i class="fab fa-twitter"></i></a>
+          </li>
+          <li class="list-inline-item">
+              <a href="#" class="text-primary"><i class="fab fa-linkedin-in"></i></a>
+          </li>
+          <li class="list-inline-item">
+              <a href="#" class="text-primary"><i class="fab fa-google-plus"></i></a>
+          </li>
+      </ul>
+   </div>
+      </div>
+  </div>
+</footer>
+
+<script src="../modelo/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
