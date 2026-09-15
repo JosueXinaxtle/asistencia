@@ -1,0 +1,51 @@
+CREATE DATABASE IF NOT EXISTS control_asistencia DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> USE control_asistencia;
+Database changed
+MariaDB [control_asistencia]>
+MariaDB [control_asistencia]> CREATE TABLE profesores (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     nombre VARCHAR(100) NOT NULL,
+    ->     usuario VARCHAR(50) NOT NULL UNIQUE,
+    ->     password VARCHAR(255) NOT NULL
+    -> );
+Query OK, 0 rows affected (0.016 sec)
+
+MariaDB [control_asistencia]>
+MariaDB [control_asistencia]> CREATE TABLE materias (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     nombre VARCHAR(100) NOT NULL
+    -> );
+Query OK, 0 rows affected (0.008 sec)
+
+MariaDB [control_asistencia]>
+MariaDB [control_asistencia]> CREATE TABLE alumnos (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     nombre VARCHAR(100) NOT NULL,
+    ->     grupo ENUM('A', 'B', 'C', 'D') NOT NULL,
+    ->     turno ENUM('Matutino', 'Vespertino') NOT NULL
+    -> );
+Query OK, 0 rows affected (0.008 sec)
+
+MariaDB [control_asistencia]>
+MariaDB [control_asistencia]> CREATE TABLE asistencia (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     alumno_id INT NOT NULL,
+    ->     materia_id INT NOT NULL,
+    ->     fecha DATE NOT NULL,
+    ->     estado ENUM('Asiste', 'Falta', 'Retardo') NOT NULL,
+    ->     FOREIGN KEY (alumno_id) REFERENCES alumnos(id) ON DELETE CASCADE,
+    ->     FOREIGN KEY (materia_id) REFERENCES materias(id) ON DELETE CASCADE,
+    ->     UNIQUE KEY unica_asistencia (alumno_id, materia_id, fecha)
+    -> );
+Query OK, 0 rows affected (0.018 sec)
+
+MariaDB [control_asistencia]>
+MariaDB [control_asistencia]> -- Profesor por defecto: usuario 'admin' y contraseña 'admin123'
+MariaDB [control_asistencia]> INSERT INTO profesores (nombre, usuario, password) VALUES
+    -> ('Profesor Administrador', 'admin', '$2y$10$mC/fFpS6w9XgZ2vN32kCSu6U6uM1DPeG7tPZ2q99fM3yS96l7f6hK');
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [control_asistencia]>
+MariaDB [control_asistencia]> INSERT INTO materias (nombre) VALUES ('Matemáticas', 'Historia', 'Química', 'Física');
